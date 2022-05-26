@@ -14,5 +14,5 @@ When("I click on Login button", () => {
 });
 
 Then("Dashboard should be shown", (content) => {
-  cy.contains("Dashboard");
+  cy.contains("Dashboard").click({ force: true });
 });
