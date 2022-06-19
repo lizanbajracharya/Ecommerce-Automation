@@ -6,13 +6,17 @@ Given("I want to add admin", () => {
 });
 
 When("I type in", () => {
+  var uuid = () => Cypress._.random(0, 1e6);
+  var id = uuid();
+
+  var testname = `${id}@yopmail.com`;
   cy.get("#email").type(loginData.email);
   cy.get("#password").type(loginData.password);
   cy.get("#loginButton").click();
-  cy.contains("User").click({ force: true });
+  cy.get("#userMenu").click({ force: true });
   cy.get("#addAdmin").click();
   cy.get("#name").type(adminData.name);
-  cy.get("#email").type(adminData.email);
+  cy.get("#email").type(testname);
   cy.get("#password").type(adminData.password);
 });
 

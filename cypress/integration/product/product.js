@@ -18,17 +18,21 @@ When("I type in", () => {
     .click()
     .get(`ul > li[data-value=${productData.brand}]`)
     .click();
-  cy.get("#color")
-    .parent()
-    .click()
-    .get(`ul > li[data-value=${productData.color}]`)
-    .click();
-  cy.get("#countInStock").type(productData.countInStock);
+
+  cy.get("#countInStock")
+    .focus()
+    .click({ force: true })
+    .type(productData.countInStock);
   cy.get("#description").type(productData.description);
 });
 
 When("I click on submit button", () => {
-  cy.get("#submitButton").click();
+  cy.get("#demo-multiple-name")
+    .parent()
+    .click()
+    .get(`ul > li[data-value=${productData.color}]`)
+    .click({ multiple: true });
+  cy.get("#submitButton").click({ force: true });
 });
 
 Then("Product should be created", (content) => {

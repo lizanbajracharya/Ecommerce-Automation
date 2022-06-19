@@ -5,9 +5,14 @@ Given("I open Ecommerce register page", () => {
 });
 
 When("I type in", () => {
+  var uuid = () => Cypress._.random(0, 1e6);
+  var id = uuid();
+
+  var testname = `${id}@yopmail.com`;
   cy.get("#name").type(registerData.name);
-  cy.get("#email").type(registerData.email);
+  cy.get("#email").type(testname);
   cy.get("#password").type(registerData.password);
+  cy.get("#confirmPassword").type(registerData.confirmPassword);
 });
 
 When("I click on submit button", () => {
@@ -15,5 +20,5 @@ When("I click on submit button", () => {
 });
 
 Then("Should be registerd succesfully", (content) => {
-  cy.contains("Register Successful").should("be.visible");
+  cy.contains("Register Successfully").should("be.visible");
 });
