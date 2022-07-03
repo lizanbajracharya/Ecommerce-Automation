@@ -14,7 +14,7 @@ When("I click on Login button", () => {
 });
 
 Then("User will be logged into", () => {
-  cy.contains("Logout");
+  cy.get("#avatar").click();
 });
 
 Then("User click on Logout button and user is logged out", () => {
