@@ -25,5 +25,5 @@ When("I click on submit button", () => {
 });
 
 Then("Admin should be created", (content) => {
-  cy.contains("Users");
+  cy.contains("Dashboard");
 });
